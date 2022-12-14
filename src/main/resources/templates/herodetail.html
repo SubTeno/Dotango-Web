@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html
+  xmlns:th="https://www.thymeleaf.org"
+  th:inline="text"
+  layout:decorate="~{layout}"
+>
+  <head>
+    <title th:utext="${hero.get('localized_name')}" />
+    <link rel="stylesheet" type="text/css" media="screen" href="" />
+  </head>
+  <body layout:fragment="content">
+    <section id="content">
+      <h1 th:utext="${hero.get('localized_name')}" />
+      <div id="header">
+        <div id="hero-desc">
+          <div id="hero-desc-background"></div>
+          <p th:utext="${#strings.abbreviate(hero.get('lore'), 450)}" />
+        </div>
+        <video
+          id="hero-gif"
+          autoplay
+          preload="auto"
+          muted
+          loop
+          playsinline
+        >
+          <source
+            type="video/webm"
+            th:src="'https://cdn.cloudflare.steamstatic.com'+${hero.get('gif')}"
+          />
+        </video>
+      </div>
+      <h1>Ability</h1>
+      <div id="ability">
+        <div th:each="ability : ${abilities}" id="ability-card">
+          <h2 th:utext="${ability.get('dname')}" />
+          <div id="ability-main">
+            <div id="top-ability-main">
+              <img
+                th:src="'https://cdn.cloudflare.steamstatic.com' + ${ability.get('img')}"
+              />
+              <div id="top-ability-info">
+                <div th:if="${ability.get('mc') != null}">
+                  <img
+                    th:src="@{Solid_blue.svg}"
+                    alt="Mana"
+                    id="mana"
+                    title="Mana Cost"
+                    style="vertical-align: text-bottom"
+                  />
+                  <a
+                    >[# th:each="MC,i : ${ability.get('mc')}"
+                    th:utext="${i.count} == 1 ? ${MC} : '/' + ${MC}"][/]</a
+                  >
+                </div>
+                <div th:if="${ability.get('cd') != null}">
+                  <img
+                    th:src="@{image_proxy.webp}"
+                    alt="Cooldown"
+                    title="Cooldown"
+                    id="CD"
+                    style="
+                      vertical-align: text-bottom;
+                      height: 20px;
+                      width: 20px;
+                    "
+                  />
+                  <a
+                    >[# th:each="CD,i : ${ability.get('cd')}"
+                    th:utext="${i.count} == 1 ? ${CD} : '/' + ${CD}"][/]</a
+                  >
+                </div>
+                <div th:if="${ability.get('bkbpierce') != null}">
+                  <img
+                    th:src="@{BKB.jpg}"
+                    alt="BKB"
+                    title="Pierces spell immunity ?"
+                    id="BKB"
+                    style="
+                      vertical-align: text-bottom;
+                      height: 20px;
+                      width: 20px;
+                    "
+                  />
+                  <a th:utext="${ability.get('bkbpierce')}" />
+                </div>
+                <div th:if="${ability.get('dispellable') != null}">
+                  <img
+                    th:src="@{DISPEL.png}"
+                    alt="Dispel"
+                    title="Dispellable ?"
+                    id="dispel"
+                    style="
+                      vertical-align: text-bottom;
+                      height: 20px;
+                      width: 20px;
+                    "
+                  />
+                  <a
+                    th:utext="${#arrays.isEmpty(ability.get('dispellable'))} == false ? ${ability.get('dispellable')}  : 'Strong Dispel' "
+                  />
+                </div>
+              </div>
+            </div>
+            <p th:utext="${ability.get('desc')}" />
+            <div id="ability-info">
+              <p
+                th:each="attr : ${ability.get('attrib')}"
+                th:if="${!#strings.contains(attr.header, 'ABILITY')}"
+                th:utext="${#strings.capitalizeWords(#strings.toLowerCase(attr.header + ' ' + attr.value))}"
+              />
+            </div>
+            <div th:if="${ability.get('lore') != null}" id="ability-lore">
+              <p th:utext="${ability.get('lore')}" />
+            </div>
+          </div>
+          <video
+            th:if="${ability.get('gif') != null && ability.get('gif') != ''}"
+            id="ability-gif"
+            autoplay
+            preload="auto"
+            muted
+            loop
+            playsinline
+          >
+            <source
+              type="video/webm"
+              th:src="'https://cdn.cloudflare.steamstatic.com'+${ability.get('gif')}"
+            />
+          </video>
+        </div>
+      </div>
+
+      <link
+        rel="stylesheet"
+        type="text/css"
+        media="screen"
+        th:href="@{herodetail.css}"
+      />
+    </section>
+  </body>
+</html>

@@ -1,0 +1,89 @@
+body {
+  margin: 0;
+  background-color: dimgray;
+  box-shadow: inset 0px 0px 5px 4px black;
+}
+div#nav {
+  height: 50px;
+}
+a#home:hover{
+  text-decoration: underline;
+}
+a#home {
+  font-family: "Inter";
+  text-decoration: unset;
+  left: 29px;
+  color: black;
+  position: absolute;
+  font-size: 25px;
+  top: 18px;
+}
+div#background-gradient {
+  width: 100%;
+  height: 650px;
+  background-color: #00000060;
+  position: absolute;
+  transform: skewY(-45deg) translateX(0vw) translateY(66vh);
+  overflow: hidden;
+  z-index: -99999999999;
+}
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("Inter-Medium.woff2?v=3.15") format("woff2"),
+    url("Inter-Medium.woff?v=3.15") format("woff");
+}
+
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("Inter-SemiBold.woff2?v=3.15") format("woff2"),
+    url("Inter-SemiBold.woff?v=3.15") format("woff");
+}
+
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("Inter-Bold.woff2?v=3.15") format("woff2"),
+    url("Inter-Bold.woff?v=3.15") format("woff");
+}
+@font-face {
+  font-family: "Inter";
+  font-style: italic;
+  font-weight: 700;
+  font-display: swap;
+  src: url("Inter-BoldItalic.woff2?v=3.15") format("woff2"),
+    url("Inter-BoldItalic.woff?v=3.15") format("woff");
+}
+
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+  src: url("Inter-ExtraBold.woff2?v=3.15") format("woff2"),
+    url("Inter-ExtraBold.woff?v=3.15") format("woff");
+}
+
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 900;
+  font-display: swap;
+  src: url("Inter-Black.woff2?v=3.15") format("woff2"),
+    url("Inter-Black.woff?v=3.15") format("woff");
+}
+@font-face {
+  font-family: "Inter";
+  font-style: italic;
+  font-weight: 900;
+  font-display: swap;
+  src: url("Inter-BlackItalic.woff2?v=3.15") format("woff2"),
+    url("Inter-BlackItalic.woff?v=3.15") format("woff");
+}

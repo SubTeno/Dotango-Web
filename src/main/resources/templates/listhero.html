@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org" layout:decorate="~{layout}">
+  <head>
+    <title>Dotango - Hero</title>
+  </head>
+  <body layout:fragment="content">
+    <!--/* Default  */-->
+    </div>
+    <h1>HERO</h1>
+    <div id="content-div">
+      <a
+      th:each="result : ${res}"
+      id="hero-card"
+      th:attr="hx-get=@{/herodetail?id=}+${result.get('id')}"
+      hx-trigger="click"
+      hx-target="body"
+      hx-swap="outerHTML show:window:top"
+      hx-push-url="true"
+      th:href="@{/herodetail?id=}+${result.get('id')}"
+      th:style="'background-image: url(https://cdn.cloudflare.steamstatic.com' + ${result.get('img')} +');'"
+    >
+      
+    </a>
+  </a>
+    </div>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      media="screen"
+      th:href="@{listhero.css}"
+    />
+  </body>
+</html>
